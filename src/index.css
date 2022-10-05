@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400;1,600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 17px;
+  background-color: #fff;
+  color: #62646a;
+}
+/* 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+@tailwind base;
+
+a:hover {
+  color:#62646a
+}
+
+@tailwind components;
+
+.container {
+  @apply max-w-[1400px] mx-auto
+}
+
+
+@tailwind utilities;
+
+@layer utilities {
+
+  .cate-list:after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    padding: 0 0 8px;
+    width: 48px;
+    border-bottom: 2px solid #c5c6c9;
+    transition: border-color .2s ease-in-out,padding .2s ease-in-out;
+  }
+
+  .cate-list:hover:after {
+    padding: 0 20px 8px;
+    border-color: #1dbf73;
+  }
+
+  .word-space-2 {
+    word-spacing: 30px;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+  }
+
+ 
+    .scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 10px;
+    }
+  
+    /* .scrollbar::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #f0f0f0;
+      opacity: 0;
+    } */
+  
+    .scrollbar-dark::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 100vh;
+      height: 10px;
+      /* border: 3px solid #f6f7ed; */
+      cursor: pointer;
+    }
+  
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.5);
+    }
+  
+    .scrollbar::-webkit-scrollbar-track-piece:start {
+      background: transparent;
+    }
+  
+    .scrollbar::-webkit-scrollbar-track-piece:end {
+      background: transparent;
+    }
+  
+}
+
+@import '~antd/dist/antd.css';
