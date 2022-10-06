@@ -16,10 +16,7 @@ const httpRequest = axios.create({
 export const get = async (path, params = {}, options = {}) => {
    console.log("[aaaaaaaaa]", params);
    const response = await httpRequest.get(path, {
-      params: {
-         maNhom: GROUP_ID,
-         ...params,
-      },
+      params,
       ...options,
    });
 

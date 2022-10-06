@@ -1,5 +1,5 @@
 export const GROUP_ID = "GP03";
-export const BASE_URL = "https://movienew.cybersoft.edu.vn/api";
+export const BASE_URL = "https://fiverrnew.cybersoft.edu.vn/api";
 export const TOKEN =
    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNzIiLCJIZXRIYW5TdHJpbmciOiIxNC8wMi8yMDIzIiwiSGV0SGFuVGltZSI6IjE2NzYzMzI4MDAwMDAiLCJuYmYiOjE2NTAzODc2MDAsImV4cCI6MTY3NjQ4MDQwMH0.e3UrKdKqwFislz0cqribEEthuaW4HOuD4xwr1CTRQwg";
 export const ACCESS_TOKEN =

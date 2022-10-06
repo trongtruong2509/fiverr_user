@@ -23,7 +23,7 @@ const HomeTestimonial = () => {
                            <span className="border-r pr-4 border-[#c5c6c9]">
                               Kay Kim, Co-Founder
                            </span>
-                           <span class="">
+                           <span>
                               <img
                                  alt="Company logo"
                                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/rooted-logo-x2.321d79d.png"
@@ -31,7 +31,7 @@ const HomeTestimonial = () => {
                               />
                            </span>
                         </p>
-                        <blockquote class="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
+                        <blockquote className="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
                            <i>
                               "It's extremely exciting that Fiverr has
                               freelancers from all over the world — it broadens
@@ -55,7 +55,7 @@ const HomeTestimonial = () => {
                            <span className="border-r pr-4 border-[#c5c6c9]">
                               Caitlin Tormey, Chief Commercial Officer
                            </span>
-                           <span class="">
+                           <span className="">
                               <img
                                  alt="Company logo"
                                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/naadam-logo-x2.0a3b198.png"
@@ -63,7 +63,7 @@ const HomeTestimonial = () => {
                               />
                            </span>
                         </p>
-                        <blockquote class="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
+                        <blockquote className="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
                            <i>
                               "We've used Fiverr for Shopify web development,
                               graphic design, and backend web development.
@@ -86,7 +86,7 @@ const HomeTestimonial = () => {
                            <span className="border-r pr-4 border-[#c5c6c9]">
                               Brighid Gannon (DNP, PMHNP-BC), Co-Founder
                            </span>
-                           <span class="">
+                           <span className="">
                               <img
                                  alt="Company logo"
                                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lavender-logo-x2.89c5e2e.png"
@@ -94,7 +94,7 @@ const HomeTestimonial = () => {
                               />
                            </span>
                         </p>
-                        <blockquote class="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
+                        <blockquote className="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
                            <i>
                               "We used Fiverr for SEO, our logo, website, copy,
                               animated videos — literally everything. It was
@@ -117,7 +117,7 @@ const HomeTestimonial = () => {
                            <span className="border-r pr-4 border-[#c5c6c9]">
                               Tim and Dan Joo, Co-Founders
                            </span>
-                           <span class="">
+                           <span>
                               <img
                                  alt="Company logo"
                                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/haerfest-logo-x2.03fa5c5.png"
@@ -125,7 +125,7 @@ const HomeTestimonial = () => {
                               />
                            </span>
                         </p>
-                        <blockquote class="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
+                        <blockquote className="text-[30px] leading-[44px] text-[#003912] font-playfair font-bold tracking-wide">
                            <i>
                               "When you want to create a business bigger than
                               yourself, you need a lot of help. That's what

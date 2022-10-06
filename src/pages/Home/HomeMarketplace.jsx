@@ -6,7 +6,7 @@ const HomeMarketplace = () => {
          <p className="pb-6 mb-10 text-4xl font-semibold text-secondary">
             Popular professional services
          </p>
-         <ul class="flex flex-wrap">
+         <ul className="flex flex-wrap">
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
