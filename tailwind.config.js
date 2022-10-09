@@ -9,6 +9,7 @@ module.exports = {
             "primary-dark": "#19a463",
             second: "#F1F1F1",
             "hover-1": "rgba(214, 234, 248,0.5)",
+            accent: "#B5B6BA",
          },
          textColor: {
             secondary: "#404145",

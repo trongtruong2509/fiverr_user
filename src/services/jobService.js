@@ -9,30 +9,9 @@ export const getJobs = async (name) => {
    return res;
 };
 
-// export const queryUsers = async (query) => {
-//    const res = await httpRequest.get("/QuanLyNguoiDung/TimKiemNguoiDung", {
-//       tuKhoa: query,
-//    });
+export const getJobById = async (id) => {
+   const res = await httpRequest.get(`/cong-viec/lay-cong-viec-chi-tiet/${id}`);
 
-//    console.log("[queryUsers]", res);
-//    return res;
-// };
-
-// export const updateUser = async (info) => {
-//    const res = await httpRequest.post(
-//       "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-//       info
-//    );
-
-//    console.log("[User Service] updateUser", res);
-//    return res;
-// };
-
-// export const deleteUser = async (account) => {
-//    const res = await httpRequest.Delete("/QuanLyNguoiDung/XoaNguoiDung", {
-//       TaiKhoan: account,
-//    });
-
-//    console.log("[deleteUser]", res);
-//    return res;
-// };
+   console.log("[getJobById]", res);
+   return res;
+};

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const initialState = {
    searchJobs: [],
    jobs: [],
-   // selected: null,
+   currentJob: null,
    pending: false,
    success: false,
    // successDelete: false,
@@ -28,6 +28,15 @@ export const getJobs = createAsyncThunk("job/getJobs", async (name) => {
    console.log("[getJobs]", response.content);
    return response.content;
 });
+
+export const getCurrentJobs = createAsyncThunk(
+   "job/getCurrentJobs",
+   async (id) => {
+      const response = await jobService.getJobById(id);
+      console.log("[getCurrentJobs]", response.content);
+      return response.content[0];
+   }
+);
 
 export const jobSlice = createSlice({
    name: "job",
@@ -70,6 +79,23 @@ export const jobSlice = createSlice({
          .addCase(getJobs.rejected, (state) => {
             console.log("[getJobs] rejected");
             state.jobs = [];
+            state.success = false;
+            state.pending = false;
+         })
+         .addCase(getCurrentJobs.pending, (state) => {
+            console.log("[getCurrentJobs]", "loading");
+            state.pending = true;
+         })
+         .addCase(getCurrentJobs.fulfilled, (state, action) => {
+            console.log("[getCurrentJobs] success", action.payload);
+
+            state.currentJob = action.payload;
+            state.success = true;
+            state.pending = false;
+         })
+         .addCase(getCurrentJobs.rejected, (state) => {
+            console.log("[getCurrentJobs] rejected");
+            state.currentJob = [];
             state.success = false;
             state.pending = false;
          });

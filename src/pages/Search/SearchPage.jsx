@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
+import Footer from "../../common/components/Footer/Footer";
 import Header from "../../common/components/Header/Header";
+import JobItem from "../../common/components/Job/JobItem";
 import { getJobs } from "../../common/slices/jobSlice";
 
 const SearchPage = () => {
@@ -63,11 +65,18 @@ const SearchPage = () => {
                         />
                      </div>
                   ) : (
-                     <></>
+                     <div className="grid grid-cols-4 gap-8 mb-10">
+                        {jobSlice?.jobs?.map((job) => (
+                           <div className="col-span-1" key={job.id}>
+                              <JobItem job={job} />
+                           </div>
+                        ))}
+                     </div>
                   )}
                </div>
             </div>
          </div>
+         <Footer />
       </div>
    );
 };
