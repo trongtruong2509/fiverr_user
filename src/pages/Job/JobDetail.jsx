@@ -82,7 +82,7 @@ const JobDetail = () => {
                   </div>
                   <div className="mb-16">
                      <div>
-                        <p className="pt-12 mb-6 text-xl font-semibold capitalize">
+                        <p className="pt-12 mb-6 text-xl font-semibold capitalize text-secondary">
                            About this Gig
                         </p>
                         <p className="pr-8 mb-12 leading-relaxed">
@@ -90,7 +90,7 @@ const JobDetail = () => {
                         </p>
                      </div>
                      <div>
-                        <p className="mt-8 mb-4 text-xl capitalize">
+                        <p className="mt-8 mb-4 text-xl font-semibold capitalize text-secondary">
                            About the Seller
                         </p>
                         <div className="flex gap-5">

@@ -6,7 +6,7 @@ const { Panel } = Collapse;
 const FAQ = () => {
    return (
       <div>
-         <p className="mb-6 text-xl font-semibold">FAQ</p>
+         <p className="mb-6 text-xl font-semibold text-secondary">FAQ</p>
          <Collapse bordered={false}>
             <Panel header="What do you need to get started?" key="1">
                I need your login credentials to get started.

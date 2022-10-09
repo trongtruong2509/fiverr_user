@@ -10,7 +10,7 @@ const Reviews = ({ job }) => {
       <div>
          <div className="flex items-center justify-between mb-6">
             <div className="flex gap-3">
-               <p className="text-xl font-semibold">
+               <p className="text-xl font-semibold text-secondary">
                   {job?.congViec.danhGia} Reviews
                </p>
                <div className="flex items-center gap-1 text-[15px] font-semibold text-[#ffbe5b]">
@@ -63,7 +63,9 @@ const Reviews = ({ job }) => {
                </div>
             </div>
             <div className="col-span-1">
-               <p className="mb-3 font-semibold">Rating Breakdown</p>
+               <p className="mb-3 font-semibold text-secondary">
+                  Rating Breakdown
+               </p>
                <div className="flex flex-col gap-[6px]">
                   <div className="flex items-center justify-between w-full">
                      <p>Seller communication level</p>

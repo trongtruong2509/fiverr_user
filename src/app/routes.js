@@ -3,6 +3,7 @@ import SearchPage from "./../pages/Search/SearchPage";
 import JobDetail from "./../pages/Job/JobDetail";
 import Login from "./../pages/Login/Login";
 import SignUp from "./../pages/SignUp/SignUp";
+import Category from "../pages/Category/Category";
 
 export const paths = {
    home: "/",
@@ -11,15 +12,13 @@ export const paths = {
    login: "/login",
    signup: "/signup",
    category: "/categories/:id",
-   // filmDetail: "/film/detail/:id",
-   // showtime: "/film/showtime/:id",
-   // users: "/users",
 };
 
 export const routes = [
    { path: paths.home, component: Home },
    { path: paths.search, component: SearchPage },
    { path: paths.jobDetail, component: JobDetail },
+   { path: paths.category, component: Category },
    { path: paths.login, component: Login },
    { path: paths.signup, component: SignUp },
 ];
