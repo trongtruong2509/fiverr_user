@@ -109,3 +109,108 @@ a:hover {
 }
 
 @import '~antd/dist/antd.css';
+
+.ant-menu-horizontal {
+  line-height: 41px;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  color: #62646a;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+  margin-top: -1px;
+  margin-bottom: 0;
+  padding: 0 0px;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
+  color: #62646a;
+}
+
+.ant-menu-light .ant-menu-item:hover, 
+.ant-menu-light .ant-menu-item-active, 
+.ant-menu-light .ant-menu:not(.ant-menu-inline) 
+.ant-menu-submenu-open, 
+.ant-menu-light .ant-menu-submenu-active, 
+.ant-menu-light .ant-menu-submenu-title:hover {
+  color: #62646a;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after, .ant-menu-horizontal > .ant-menu-submenu::after {
+  position: absolute;
+  right: 4px;
+  bottom: 0;
+  left: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  content: '';
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after  {
+  border-bottom: #1dbf73 3px solid;
+}
+
+.ant-menu-item-group {
+  padding: 8px 4px;
+  /* padding-left: -16px; */
+  /* margin-left: -16px; */
+}
+
+.ant-menu-item-group-title {
+  height: 1.5715;
+  padding: 8px 24px 8px;
+  color: #404145;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5715;
+  transition: all 0.3s;
+}
+
+.ant-menu-item-group-list .ant-menu-item, .ant-menu-item-group-list .ant-menu-submenu-title {
+  padding: 0 10px 0 10px;
+  font-size: 16px;
+  color: #62646a;
+}
+
+.ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title {
+  height: 24px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0 16px;
+  overflow: hidden;
+  line-height: 24px;
+  text-overflow: ellipsis;
+}
+
+.ant-collapse-borderless {
+  background-color: #ffffff;
+  font-weight: 600;
+  color: #62646a;
+  font-size: 17px;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  /* position: relative; */
+  /* display: flex; */
+  /* flex-wrap: nowrap; */
+  /* align-items: flex-start; */
+  padding: 20px 16px;
+  color: #62646a;
+  /* line-height: 1.5715; */
+  /* cursor: pointer; */
+  /* transition: all 0.3s, visibility 0s; */
+}
+
+.ant-collapse-content {
+  color: #62646a;
+  font-weight: 400;
+}

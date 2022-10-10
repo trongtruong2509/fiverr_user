@@ -4,10 +4,12 @@ import JobDetail from "./../pages/Job/JobDetail";
 import Login from "./../pages/Login/Login";
 import SignUp from "./../pages/SignUp/SignUp";
 import Category from "../pages/Category/Category";
+import JobsPage from "../pages/Job/JobsPage";
 
 export const paths = {
    home: "/",
    search: "/search/:id",
+   jobs: "/jobs/:id",
    jobDetail: "/job/:id",
    login: "/login",
    signup: "/signup",
@@ -17,6 +19,7 @@ export const paths = {
 export const routes = [
    { path: paths.home, component: Home },
    { path: paths.search, component: SearchPage },
+   { path: paths.jobs, component: JobsPage },
    { path: paths.jobDetail, component: JobDetail },
    { path: paths.category, component: Category },
    { path: paths.login, component: Login },

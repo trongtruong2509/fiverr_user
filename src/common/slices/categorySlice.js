@@ -6,7 +6,9 @@ import { toast } from "react-toastify";
 
 const initialState = {
    categories: [],
+   jobsByCategory: [],
    currentCategory: null,
+   currentCategoryItem: null,
    pending: false,
    success: false,
 };
@@ -23,6 +25,24 @@ export const getCategory = createAsyncThunk(
       const response = await categoryServices.getCategory(categoryId);
       console.log("[getCategory]", response.content);
       return response.content[0];
+   }
+);
+
+export const getCategoryItem = createAsyncThunk(
+   "job/getCategoryItem",
+   async (categoryItemId) => {
+      const response = await categoryServices.getCategoryItem(categoryItemId);
+      console.log("[getCategory]", response.content);
+      return response.content;
+   }
+);
+
+export const getJobByCategory = createAsyncThunk(
+   "job/getJobByCategory",
+   async (id) => {
+      const response = await categoryServices.getJobByCategory(id);
+      console.log("[getJobByCategory]", response.content);
+      return response.content;
    }
 );
 
@@ -67,6 +87,40 @@ export const categorySlice = createSlice({
          .addCase(getCategory.rejected, (state) => {
             console.log("[getCategory] rejected");
             state.currentCategory = null;
+            state.success = false;
+            state.pending = false;
+         })
+         .addCase(getJobByCategory.pending, (state) => {
+            console.log("[getJobByCategory]", "loading");
+            state.pending = true;
+         })
+         .addCase(getJobByCategory.fulfilled, (state, action) => {
+            console.log("[getJobByCategory] success", action.payload);
+
+            state.jobsByCategory = action.payload;
+            state.success = true;
+            state.pending = false;
+         })
+         .addCase(getJobByCategory.rejected, (state) => {
+            console.log("[getJobByCategory] rejected");
+            state.jobsByCategory = [];
+            state.success = false;
+            state.pending = false;
+         })
+         .addCase(getCategoryItem.pending, (state) => {
+            console.log("[getCategoryItem]", "loading");
+            state.pending = true;
+         })
+         .addCase(getCategoryItem.fulfilled, (state, action) => {
+            console.log("[getCategoryItem] success", action.payload);
+
+            state.currentCategoryItem = action.payload;
+            state.success = true;
+            state.pending = false;
+         })
+         .addCase(getCategoryItem.rejected, (state) => {
+            console.log("[getCategoryItem] rejected");
+            state.currentCategoryItem = null;
             state.success = false;
             state.pending = false;
          });

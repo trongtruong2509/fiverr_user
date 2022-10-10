@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu } from "antd";
+
 import { paths } from "../../../app/routes";
 import Search from "../Search/Search";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategories } from "../../slices/categorySlice";
 
 const Header = () => {
+   const dispatch = useDispatch();
+
+   const categorySlice = useSelector((state) => state.category);
+
+   const [items, setItems] = useState([]);
+
+   useEffect(() => {
+      dispatch(getCategories());
+   }, []);
+
+   useEffect(() => {
+      if (categorySlice?.categories) {
+         setItems(
+            categorySlice?.categories.map((cate) => ({
+               key: cate.id,
+               label: cate.tenLoaiCongViec,
+               children: cate.dsNhomChiTietLoai.map((group) => ({
+                  key: group.hinhAnh,
+                  type: "group",
+                  label: group.tenNhom,
+                  children: group.dsChiTietLoai.map((item) => ({
+                     label: item.tenChiTiet,
+                     key: item.tenChiTiet,
+                     icon: <Link to={paths.jobs.replace(":id", item.id)} />,
+                  })),
+               })),
+            }))
+         );
+      }
+   }, [categorySlice?.categories]);
+
    return (
       <div>
          <div className="container py-5">
@@ -40,17 +76,21 @@ const Header = () => {
                </div>
             </div>
          </div>
-         <div className="border-y border-[#e4e5e7] py-[6px]">
-            <div className="container flex items-center justify-between">
-               <button>Graphic & Design</button>
-               <button>Digital Marketing</button>
-               <button>Writing & Translation</button>
-               <button>Video & Animation</button>
-               <button>Music & Audio</button>
-               <button>Programming & Tech</button>
-               <button>Business</button>
-               <button>Lifestyle</button>
-               <button>Trending</button>
+         <div className="border-y border-[#e4e5e7]">
+            <div className="container">
+               <Menu
+                  className="flex items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
+                  // onClick={onClick}
+                  // selectedKeys={[current]}
+                  // style={{
+                  //    border: "none",
+                  //    display: "flex",
+                  //    justifyContent: "space-between",
+                  //    width: "100%",
+                  // }}
+                  mode="horizontal"
+                  items={items}
+               />
             </div>
          </div>
       </div>
