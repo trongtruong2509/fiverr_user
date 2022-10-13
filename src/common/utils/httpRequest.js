@@ -27,8 +27,8 @@ export const post = async (path, data, options = {}) => {
    const response = await httpRequest.post(path, data, {
       headers: {
          ...defaultHeader,
-         Authorization:
-            "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
+         // Authorization:
+         //    "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
       },
       ...options,
    });

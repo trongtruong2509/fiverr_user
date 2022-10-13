@@ -18,16 +18,16 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../common/slices/userSlice";
 
 function App() {
-   const [userLogged, setUserLogged] = useState(
-      JSON.parse(localStorage.getItem("currentUser"))
-   );
+   // const [userLogged, setUserLogged] = useState(
+   //    JSON.parse(localStorage.getItem("currentUser"))
+   // );
 
    // useEffect(() => {
    //    localStorage.setItem("currentUser", JSON.stringify(userLogged));
    // }, [userLogged]);
 
-   const logIn = () => setUserLogged(true);
-   const logOut = () => setUserLogged(false);
+   // const logIn = () => setUserLogged(true);
+   // const logOut = () => setUserLogged(false);
 
    return (
       <Router>

@@ -3,22 +3,6 @@ import { toast } from "react-toastify";
 
 import * as userService from "../../services/userService";
 
-export const fetchUsers = createAsyncThunk("user/fetchAllUsers", async () => {
-   const response = await userService.getAllUsers();
-
-   console.log("[fetchUsers]", response.content);
-
-   return response.content;
-});
-
-export const queryUsers = createAsyncThunk("user/queryUsers", async (query) => {
-   const response = await userService.queryUsers(query);
-
-   console.log("[queryUsers]", response.content);
-
-   return response.content;
-});
-
 export const userLogin = createAsyncThunk(
    "user/userLoginStatus",
    async (info, { rejectWithValue }) => {
@@ -61,23 +45,6 @@ export const updateUserInfo = createAsyncThunk(
    }
 );
 
-export const deleteUserById = createAsyncThunk(
-   "user/deleteUserByIdStatus",
-   async (info, { rejectWithValue }) => {
-      try {
-         const response = await userService.deleteUser(info);
-
-         return response.data.content;
-      } catch (err) {
-         if (!err.response) {
-            throw err;
-         }
-
-         return rejectWithValue(err.response.data);
-      }
-   }
-);
-
 const initialState = {
    entities: [],
    current: null,
@@ -85,7 +52,6 @@ const initialState = {
    success: false,
    allow: false,
    remember: false,
-   successDelete: false,
 };
 
 export const userSlice = createSlice({
@@ -100,9 +66,6 @@ export const userSlice = createSlice({
       },
       updateRemember: (state, action) => {
          state.remember = action.payload;
-      },
-      updateSuccessDeleteUser: (state, action) => {
-         state.successDelete = action.payload;
       },
    },
    extraReducers: (builder) => {
@@ -121,7 +84,7 @@ export const userSlice = createSlice({
             localStorage.setItem("accessToken", action.payload.accessToken);
 
             // if (state.remember) {
-            localStorage.setItem("currentUser", JSON.stringify(action.payload));
+            localStorage.setItem("fiverr_User", JSON.stringify(action.payload));
             // }
          })
          .addCase(userLogin.rejected, (state, action) => {
@@ -150,38 +113,6 @@ export const userSlice = createSlice({
             toast.error(action.payload.content);
             state.pending = false;
          })
-         .addCase(fetchUsers.pending, (state) => {
-            console.log("[fetchUsers]", "loading");
-            state.pending = true;
-         })
-         .addCase(fetchUsers.fulfilled, (state, action) => {
-            console.log("[fetchUsers] success", action.payload);
-            state.entities = action.payload;
-            state.success = true;
-            state.pending = false;
-         })
-         .addCase(fetchUsers.rejected, (state, action) => {
-            console.log("[fetchUsers] rejected", action.payload);
-            state.entities = [];
-            state.success = false;
-            state.pending = false;
-         })
-         .addCase(deleteUserById.pending, (state) => {
-            console.log("[deleteUserById]", "loading");
-            state.pending = true;
-         })
-         .addCase(deleteUserById.fulfilled, (state, action) => {
-            console.log("[deleteUserById] success");
-            state.successDelete = true;
-            state.pending = false;
-            toast.warn("User account deleted");
-         })
-         .addCase(deleteUserById.rejected, (state, action) => {
-            console.log("[deleteUserById] rejected", action.payload);
-            state.successDelete = false;
-            state.pending = false;
-            toast.error(action.payload.content);
-         })
          .addCase(updateUserInfo.pending, (state) => {
             console.log("[updateUserInfo]", "loading");
             state.pending = true;
@@ -197,32 +128,11 @@ export const userSlice = createSlice({
             state.successDelete = false;
             state.pending = false;
             toast.error(action.payload.content);
-         })
-         .addCase(queryUsers.pending, (state) => {
-            console.log("[queryUsers]", "loading");
-            state.pending = true;
-         })
-         .addCase(queryUsers.fulfilled, (state, action) => {
-            console.log("[queryUsers] success");
-            state.entities = action.payload;
-            state.success = true;
-            state.pending = false;
-         })
-         .addCase(queryUsers.rejected, (state, action) => {
-            console.log("[queryUsers] rejected", action.payload);
-            state.entities = [];
-            state.success = false;
-            state.pending = false;
          });
    },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-   updateUser,
-   updateAllow,
-   updateRemember,
-   updateSuccessDeleteUser,
-} = userSlice.actions;
+export const { updateUser, updateAllow, updateRemember } = userSlice.actions;
 
 export default userSlice.reducer;
