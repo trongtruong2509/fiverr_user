@@ -179,9 +179,7 @@ const Profile = () => {
                <div className="col-span-7 ">
                   <div className="p-5 border border-[rgb(218, 219, 221)] flex flex-col gap-6">
                      {bookingJobs?.map((job, index) => (
-                        // <div key={index} className>
-                        <BookingJob job={job} />
-                        // </div>
+                        <BookingJob job={job} key={index} />
                      ))}
                   </div>
                </div>

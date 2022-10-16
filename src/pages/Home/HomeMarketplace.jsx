@@ -10,7 +10,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href={`"/categories/graphics-design?source=hplo_cat_sepos=1"`}
+                  // href={`"/categories/graphics-design?source=hplo_cat_sepos=1"`}
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -23,7 +23,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/online-marketing?source=hplo_cat_sepos=2"
+                  // href="/categories/online-marketing?source=hplo_cat_sepos=2"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -36,7 +36,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/writing-translation?source=hplo_cat_sepos=3"
+                  // href="/categories/writing-translation?source=hplo_cat_sepos=3"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -50,7 +50,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/video-animation?source=hplo_cat_sepos=4"
+                  // href="/categories/video-animation?source=hplo_cat_sepos=4"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -64,7 +64,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/music-audio?source=hplo_cat_sepos=5"
+                  // href="/categories/music-audio?source=hplo_cat_sepos=5"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -77,7 +77,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/programming-tech?source=hplo_cat_sepos=6"
+                  // href="/categories/programming-tech?source=hplo_cat_sepos=6"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -90,7 +90,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/business?source=hplo_cat_sepos=7"
+                  // href="/categories/business?source=hplo_cat_sepos=7"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -103,7 +103,7 @@ const HomeMarketplace = () => {
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
-                  href="/categories/lifestyle?source=hplo_cat_sepos=8"
+                  // href="/categories/lifestyle?source=hplo_cat_sepos=8"
                >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
@@ -114,7 +114,9 @@ const HomeMarketplace = () => {
                </a>
             </li>
             <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
-               <a href="/categories/data?source=hplo_cat_sepos=9">
+               <a
+               // href="/categories/data?source=hplo_cat_sepos=9"
+               >
                   <img
                      className="block w-12 h-12 mb-[15px] mx-auto"
                      src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"

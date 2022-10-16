@@ -1,10 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../app/routes";
 import Star from "../../common/components/Star";
+import {
+   deleteBookingJobById,
+   updateDeletingJob,
+} from "../../common/slices/bookingSlice";
 
 const BookingJob = ({ job }) => {
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    return (
       <div>
@@ -41,9 +47,18 @@ const BookingJob = ({ job }) => {
                   </div>
                </div>
                <p className="mt-4">{job?.congViec.moTaNgan}</p>
-               <div className="pb-3 pr-3 text-right">
+               <div className="flex justify-end gap-4 pb-3 pr-3">
                   <button
-                     className="px-4 py-[6px] rounded-[4px] bg-primary hover:bg-primary-dark text-white"
+                     className="px-4 py-[6px] rounded-[4px] border hover:text-white hover:bg-slate-600"
+                     onClick={() => {
+                        dispatch(updateDeletingJob(job));
+                        dispatch(deleteBookingJobById(job?.id));
+                     }}
+                  >
+                     Delete
+                  </button>
+                  <button
+                     className="px-4 py-[6px] rounded-[4px] border border-primary bg-primary hover:bg-primary-dark text-white"
                      onClick={() =>
                         navigate(
                            paths.jobDetail.replace(":id", job?.congViec.id)

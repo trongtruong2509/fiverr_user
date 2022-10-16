@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 import * as bookingService from "../../services/bookingService";
 
@@ -13,8 +13,18 @@ export const getBookingJobs = createAsyncThunk(
    }
 );
 
+export const deleteBookingJobById = createAsyncThunk(
+   "booking/deleteBookingJobById",
+   async (id) => {
+      const response = await bookingService.deleteRentingJob(id);
+
+      return response.content;
+   }
+);
+
 const initialState = {
    jobs: [],
+   deletingJob: null,
    // jobs: [],
    // currentJob: null,
    pending: false,
@@ -25,9 +35,9 @@ export const bookingSlice = createSlice({
    name: "booking",
    initialState,
    reducers: {
-      // updateSearchJobs: (state, action) => {
-      //    state.selected = action.payload;
-      // },
+      updateDeletingJob: (state, action) => {
+         state.deletingJob = action.payload;
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -46,11 +56,47 @@ export const bookingSlice = createSlice({
             state.jobs = [];
             state.success = false;
             state.pending = false;
+         })
+         .addCase(deleteBookingJobById.pending, (state) => {
+            console.log("[deleteBookingJobById]", "loading");
+            state.pending = true;
+         })
+         .addCase(deleteBookingJobById.fulfilled, (state, action) => {
+            console.log("[deleteBookingJobById] success", action.payload);
+            console.log(
+               "[deleteBookingJobById] deletingJob",
+               state.deletingJob
+            );
+
+            const idx = state.jobs.findIndex(
+               (job) => job.id === state.deletingJob.id
+            );
+
+            console.log("[deleteBookingJobById] idx", idx);
+
+            if (idx !== -1) {
+               state.jobs.splice(idx, 1);
+            }
+
+            state.deletingJob = null;
+            state.success = true;
+            state.pending = false;
+         })
+         .addCase(deleteBookingJobById.rejected, (state, action) => {
+            console.log("[deleteBookingJobById] rejected", action.payload);
+            state.deletingJob = null;
+            state.success = false;
+            state.pending = false;
+            toast.error(
+               `Delete booking job ${
+                  current(state.deletingJob).congViec.tenCongViec
+               } failed. Try again`
+            );
          });
    },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = bookingSlice.actions;
+export const { updateDeletingJob } = bookingSlice.actions;
 
 export default bookingSlice.reducer;

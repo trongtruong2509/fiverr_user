@@ -133,7 +133,7 @@ const User = ({ user }) => {
                      <button
                         className="w-full py-2 text-left border-b hover:text-primary"
                         onClick={() =>
-                           navigate(paths.profile.replace(":id", user?.user.id))
+                           navigate(paths.profile.replace(":id", user?.id))
                         }
                      >
                         Profile
@@ -152,7 +152,7 @@ const User = ({ user }) => {
                <p
                   className="text-secondary hover:text-primary"
                   onClick={() =>
-                     navigate(paths.profile.replace(":id", user?.user.id))
+                     navigate(paths.profile.replace(":id", user?.id))
                   }
                >
                   {user?.name}

@@ -17,3 +17,20 @@ export const getRentingJobs = async () => {
    console.log("[getUserInfo]", res);
    return res;
 };
+
+export const deleteRentingJob = async (id) => {
+   const res = await httpRequest.Delete(
+      `/thue-cong-viec/${id}`,
+      {},
+      {
+         headers: {
+            token: localStorage.getItem("accessToken"),
+            accept: "application/json",
+            TokenCybersoft: TOKEN,
+         },
+      }
+   );
+
+   console.log("[deleteRentingJob]", res);
+   return res;
+};
