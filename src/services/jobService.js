@@ -1,3 +1,4 @@
+import { TOKEN } from "../common/utils/config";
 import * as httpRequest from "../common/utils/httpRequest";
 
 export const getJobs = async (name) => {
@@ -13,5 +14,12 @@ export const getJobById = async (id) => {
    const res = await httpRequest.get(`/cong-viec/lay-cong-viec-chi-tiet/${id}`);
 
    console.log("[getJobById]", res);
+   return res;
+};
+
+export const rentJob = async (model) => {
+   const res = await httpRequest.post(`/api/thue-cong-viec`, model);
+
+   console.log("[rentJob]", res);
    return res;
 };

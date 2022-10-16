@@ -1,3 +1,4 @@
+import { TOKEN } from "../common/utils/config";
 import * as httpRequest from "../common/utils/httpRequest";
 
 export const login = async (info) => {
@@ -14,21 +15,12 @@ export const signup = async (info) => {
    return res;
 };
 
-// export const getAllUsers = async () => {
-//    const res = await httpRequest.get("/QuanLyNguoiDung/LayDanhSachNguoiDung");
+export const getUserInfo = async (id) => {
+   const res = await httpRequest.get(`/users/${id}`);
 
-//    console.log("[getAllUsers]", res);
-//    return res;
-// };
-
-// export const queryUsers = async (query) => {
-//    const res = await httpRequest.get("/QuanLyNguoiDung/TimKiemNguoiDung", {
-//       tuKhoa: query,
-//    });
-
-//    console.log("[queryUsers]", res);
-//    return res;
-// };
+   console.log("[getUserInfo]", res);
+   return res;
+};
 
 export const updateUser = async (info) => {
    const res = await httpRequest.post(
@@ -39,12 +31,3 @@ export const updateUser = async (info) => {
    console.log("[User Service] updateUser", res);
    return res;
 };
-
-// export const deleteUser = async (account) => {
-//    const res = await httpRequest.Delete("/QuanLyNguoiDung/XoaNguoiDung", {
-//       TaiKhoan: account,
-//    });
-
-//    console.log("[deleteUser]", res);
-//    return res;
-// };

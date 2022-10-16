@@ -45,9 +45,16 @@ export const updateUserInfo = createAsyncThunk(
    }
 );
 
+export const getUser = createAsyncThunk("user/getUser", async (id) => {
+   const response = await userService.getUserInfo(id);
+
+   return response.content;
+});
+
 const initialState = {
-   entities: [],
+   auth: JSON.parse(localStorage.getItem("fiverr_User")) ?? null,
    current: null,
+   bookingJobs: [],
    pending: false,
    success: false,
    allow: false,
@@ -59,13 +66,18 @@ export const userSlice = createSlice({
    initialState,
    reducers: {
       updateUser: (state, action) => {
-         state.current = action.payload;
+         state.auth = action.payload;
       },
       updateAllow: (state, action) => {
          state.allow = action.payload;
       },
       updateRemember: (state, action) => {
          state.remember = action.payload;
+      },
+      logoutUpdate: (state) => {
+         state.auth = null;
+         localStorage.setItem("accessToken", "");
+         localStorage.setItem("fiverr_User", null);
       },
    },
    extraReducers: (builder) => {
@@ -76,12 +88,12 @@ export const userSlice = createSlice({
          })
          .addCase(userLogin.fulfilled, (state, action) => {
             console.log("[userLogin] success", action.payload);
-            state.current = action.payload;
+            state.auth = action.payload;
             state.allow = true;
             state.success = true;
             state.pending = false;
             toast.info("Login successfully");
-            localStorage.setItem("accessToken", action.payload.accessToken);
+            localStorage.setItem("accessToken", action.payload.token);
 
             // if (state.remember) {
             localStorage.setItem("fiverr_User", JSON.stringify(action.payload));
@@ -89,7 +101,7 @@ export const userSlice = createSlice({
          })
          .addCase(userLogin.rejected, (state, action) => {
             console.log("[userLogin] rejected", action.payload);
-            state.current = null;
+            state.auth = null;
             state.allow = false;
             state.success = false;
             state.pending = false;
@@ -123,16 +135,23 @@ export const userSlice = createSlice({
             state.pending = false;
             toast.info("Account info updated!");
          })
-         .addCase(updateUserInfo.rejected, (state, action) => {
-            console.log("[updateUserInfo] rejected", action.payload);
-            state.successDelete = false;
+         .addCase(getUser.fulfilled, (state, action) => {
+            console.log("[getUser] success", action.payload);
+            state.current = action.payload;
+            state.success = true;
             state.pending = false;
-            toast.error(action.payload.content);
+         })
+         .addCase(getUser.rejected, (state, action) => {
+            console.log("[getUser] rejected", action.payload);
+            state.current = null;
+            state.success = false;
+            state.pending = false;
          });
    },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateUser, updateAllow, updateRemember } = userSlice.actions;
+export const { updateUser, updateAllow, updateRemember, logoutUpdate } =
+   userSlice.actions;
 
 export default userSlice.reducer;

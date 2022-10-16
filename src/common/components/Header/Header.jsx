@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "antd";
+import Tippy from "@tippyjs/react/headless";
 
 import { paths } from "../../../app/routes";
 import Search from "../Search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCategories } from "../../slices/categorySlice";
+import DefaultAvatar from "../../../assets/default_avatar.svg";
+import { logoutUpdate } from "../../slices/userSlice";
 
 const Header = () => {
    const dispatch = useDispatch();
+   const navigate = useNavigate();
 
    const categorySlice = useSelector((state) => state.category);
+   const user = useSelector((state) => state.user.auth);
 
    const [items, setItems] = useState([]);
 
@@ -63,17 +68,28 @@ const Header = () => {
                   </Link>
                   <Search header />
                </div>
-               <div className="flex gap-6 text-base font-semibold">
-                  <button className="transition-all duration-200 ease-out hover:text-primary">
-                     Become a Seller
-                  </button>
-                  <button className="transition-all duration-200 ease-out hover:text-primary">
-                     Sign In
-                  </button>
-                  <button className="px-5 py-1 text-sm transition-all duration-200 ease-out border rounded-md border-primary text-primary hover:text-white hover:bg-primary">
-                     Join
-                  </button>
-               </div>
+
+               {user ? (
+                  <User user={user?.user} />
+               ) : (
+                  <div className="flex gap-6 text-base font-semibold">
+                     <button className="transition-all duration-200 ease-out hover:text-primary">
+                        Become a Seller
+                     </button>
+                     <button
+                        className="transition-all duration-200 ease-out hover:text-primary"
+                        onClick={() => navigate(paths.login)}
+                     >
+                        Sign In
+                     </button>
+                     <button
+                        className="px-5 py-1 text-sm transition-all duration-200 ease-out border rounded-md border-primary text-primary hover:text-white hover:bg-primary"
+                        onClick={() => navigate(paths.signup)}
+                     >
+                        Join
+                     </button>
+                  </div>
+               )}
             </div>
          </div>
          <div className="border-y border-[#e4e5e7]">
@@ -93,6 +109,61 @@ const Header = () => {
                />
             </div>
          </div>
+      </div>
+   );
+};
+
+const User = ({ user }) => {
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
+   return (
+      <div>
+         <Tippy
+            interactive
+            // hideOnClick="toggle"
+            placement="bottom"
+            appendTo={() => document.body}
+            delay={[0, 700]}
+            trigger="click"
+            // reference={ref}
+            render={(attrs) => (
+               <div>
+                  <div className="w-32 bg-white border rounded-[4px] px-4">
+                     <button
+                        className="w-full py-2 text-left border-b hover:text-primary"
+                        onClick={() =>
+                           navigate(paths.profile.replace(":id", user?.user.id))
+                        }
+                     >
+                        Profile
+                     </button>
+                     <button
+                        className="w-full py-2 text-left hover:text-primary"
+                        onClick={() => dispatch(logoutUpdate())}
+                     >
+                        Log out
+                     </button>
+                  </div>
+               </div>
+            )}
+         >
+            <div className="flex items-center justify-center gap-6 font-semibold hover:cursor-pointer">
+               <p
+                  className="text-secondary hover:text-primary"
+                  onClick={() =>
+                     navigate(paths.profile.replace(":id", user?.user.id))
+                  }
+               >
+                  {user?.name}
+               </p>
+               <img
+                  src={user?.avatar == "" ? DefaultAvatar : user?.avatar}
+                  alt={user?.name}
+                  className="object-cover w-10 h-10 rounded-full"
+               />
+            </div>
+         </Tippy>
       </div>
    );
 };

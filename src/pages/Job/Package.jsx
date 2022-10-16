@@ -1,6 +1,31 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { paths } from "../../app/routes";
+import { rentAJob } from "../../common/slices/jobSlice";
 
 const Package = ({ job }) => {
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
+   const currentUser = useSelector((state) => state.user.auth);
+
+   const handleContinue = () => {
+      if (!currentUser) {
+         navigate(paths.login);
+      } else {
+         const model = {
+            // id: 0,
+            maCongViec: job?.id,
+            maNguoiThue: currentUser?.user.id,
+            ngayThue: new Date(Date.now()).toLocaleString(),
+            hoanThanh: false,
+         };
+
+         dispatch(rentAJob(model));
+      }
+   };
+
    return (
       <div className="w-full">
          <div>
@@ -22,7 +47,10 @@ const Package = ({ job }) => {
                </div>
                <p className="my-8">{job?.congViec.moTaNgan}</p>
                <div>
-                  <button className="rounded-[4px] bg-primary hover:bg-primary-dark text-white font-semibold py-[10px] w-full">
+                  <button
+                     className="rounded-[4px] bg-primary hover:bg-primary-dark text-white font-semibold py-[10px] w-full"
+                     onClick={handleContinue}
+                  >
                      Continue <span>(${job?.congViec.giaTien})</span>
                   </button>
                   <button className="rounded-[4px]  text-primary py-3 w-full text-sm">

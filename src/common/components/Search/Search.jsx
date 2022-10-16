@@ -28,7 +28,7 @@ const Search = ({ content, header = false }) => {
 
       if (searchText !== "") {
          // setLoading(true);
-         console.log("[searchText]", searchText);
+         // console.log("[searchText]", searchText);
          dispatch(getSearchJobs(searchText));
       }
    }, [searchText]);

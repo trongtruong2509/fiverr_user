@@ -5,12 +5,14 @@ import Login from "./../pages/Login/Login";
 import SignUp from "./../pages/SignUp/SignUp";
 import Category from "../pages/Category/Category";
 import JobsPage from "../pages/Job/JobsPage";
+import Profile from "../pages/Profile/Profile";
 
 export const paths = {
    home: "/",
    search: "/search/:id",
    jobs: "/jobs/:id",
    jobDetail: "/job/:id",
+   profile: "/profile/:id",
    login: "/login",
    signup: "/signup",
    category: "/categories/:id",
@@ -20,6 +22,7 @@ export const routes = [
    { path: paths.home, component: Home },
    { path: paths.search, component: SearchPage },
    { path: paths.jobs, component: JobsPage },
+   { path: paths.profile, component: Profile },
    { path: paths.jobDetail, component: JobDetail },
    { path: paths.category, component: Category },
    { path: paths.login, component: Login },

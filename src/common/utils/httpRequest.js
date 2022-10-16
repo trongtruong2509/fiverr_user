@@ -14,7 +14,6 @@ const httpRequest = axios.create({
 });
 
 export const get = async (path, params = {}, options = {}) => {
-   console.log("[aaaaaaaaa]", params);
    const response = await httpRequest.get(path, {
       params,
       ...options,
@@ -27,14 +26,13 @@ export const post = async (path, data, options = {}) => {
    const response = await httpRequest.post(path, data, {
       headers: {
          ...defaultHeader,
+         token: localStorage.getItem("accessToken"),
+         "Content-Type": "application/json-patch+json",
          // Authorization:
          //    "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
       },
       ...options,
    });
-
-   // console.log("[aaaaaaaaa]", params);
-
    return response;
 };
 
@@ -43,8 +41,7 @@ export const put = async (path, data, options = {}) => {
    const response = await httpRequest.put(path, data, {
       headers: {
          ...defaultHeader,
-         Authorization:
-            "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
+         // Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },
       ...options,
    });
@@ -56,8 +53,7 @@ export const Delete = async (path, payload, options = {}) => {
    const response = await httpRequest.delete(path, {
       headers: {
          ...defaultHeader,
-         Authorization:
-            "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
+         // Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },
       params: {
          ...payload,
