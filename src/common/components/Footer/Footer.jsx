@@ -223,7 +223,7 @@ const Footer = () => {
                      </div>
                   </article>
                </div>
-               <div className="col-span-1">
+               <div className="col-span-1 mt-8 umd:mt-0">
                   <article>
                      <div className="pb-5">
                         <div className="gGrmDAw">
@@ -308,7 +308,7 @@ const Footer = () => {
                      </div>
                   </article>
                </div>
-               <div className="col-span-1">
+               <div className="col-span-1 mt-8 umd:mt-0">
                   <article>
                      <div className="pb-5">
                         <div className="gGrmDAw">

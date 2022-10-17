@@ -19,7 +19,7 @@ const contentStyle = {
 
 const HomeCarousel = () => {
    return (
-      <div className="relative w-full">
+      <div className="relative w-full -mt-[82px]">
          <Carousel
             effect="fade"
             autoplay
@@ -34,67 +34,70 @@ const HomeCarousel = () => {
                width: "100vw",
             }}
          >
-            <div className="relative w-screen max-h-[680px]">
-               <img src={gabrielle} className="object-cover w-full" />
-               <div className="container absolute bottom-0 left-0 right-0 w-full mb-8 text-[17px] text-right text-white">
-                  <p>
-                     Gabrielle, <b>Video Editor</b>
-                  </p>
+            <div className="relative w-screen umd:h-[680px] h-[410px] bg-[#7d1a00]">
+               {/* <div className="w-screen h-2/5 bg-[#7d1a00] umd:hidden" /> */}
+               <div className="hidden umd:block">
+                  <img src={gabrielle} className="object-cover h-[680px]" />
+                  <div className="container absolute bottom-0 left-0 right-0 w-full mb-8 text-[17px] text-right text-white">
+                     <p>
+                        Gabrielle, <b>Video Editor</b>
+                     </p>
+                  </div>
                </div>
             </div>
-            <div className="w-screen h-auto">
-               <img
-                  src={andrea}
-                  className="object-cover max-h-[680px] w-screen"
-               />
-               <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
-                  <p>
-                     Andrea, <b>Fashion Designer</b>
-                  </p>
+            <div className="w-screen bg-[#023a15] umd:h-[680px] h-[410px]">
+               {/* <div className="w-screen h-2/5 bg-[#023a15] umd:hidden" /> */}
+               <div className="hidden umd:block">
+                  <img src={andrea} className="object-cover h-[680px]" />
+                  <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
+                     <p>
+                        Andrea, <b>Fashion Designer</b>
+                     </p>
+                  </div>
                </div>
             </div>
-            <div className="w-screen h-auto">
-               <img
-                  src={moon}
-                  className="object-cover max-h-[680px] w-screen"
-               />
-               <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
-                  <p>
-                     Moon, <b>Marketing Expert</b>
-                  </p>
+            <div className="w-screen bg-[#b64762] umd:h-[680px] h-[410px]">
+               {/* <div className="w-screen h-2/5 bg-[#b64762] umd:hidden" /> */}
+               <div className="hidden umd:block">
+                  <img src={moon} className="object-cover h-[680px]" />
+                  <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
+                     <p>
+                        Moon, <b>Marketing Expert</b>
+                     </p>
+                  </div>
                </div>
             </div>
-            <div className="w-screen h-auto">
-               <img
-                  src={ritika}
-                  className="object-cover max-h-[680px] w-screen"
-               />
-               <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
-                  <p>
-                     Ritika, <b>Shoemaker and Designer</b>
-                  </p>
+            <div className="w-screen bg-[#540e1f] umd:h-[680px] h-[410px]">
+               {/* <div className="w-screen h-2/5 bg-[#540e1f] umd:hidden" /> */}
+               <div className="hidden umd:block">
+                  <img src={ritika} className="object-cover h-[680px]" />
+                  <div className="container absolute bottom-0 left-0 right-0 w-screen mb-8 text-[17px] text-right text-white">
+                     <p>
+                        Ritika, <b>Shoemaker and Designer</b>
+                     </p>
+                  </div>
                </div>
             </div>
-            <div className="w-screen h-auto">
-               <img
-                  src={zach}
-                  className="object-cover max-h-[680px] w-screen"
-               />
-               <div className="container absolute bottom-0 left-0 right-0 w-full mb-8 text-[17px] text-right text-white">
-                  <p>
-                     Zach, <b>Bar Owner</b>
-                  </p>
+            <div className="w-screen bg-[#023a15] umd:h-[680px] h-[410px]">
+               {/* <div className="w-screen h-2/5 bg-[#023a15] umd:hidden" /> */}
+               <div className="hidden umd:block">
+                  <img src={zach} className="object-cover h-[680px]" />
+                  <div className="container absolute bottom-0 left-0 right-0 w-full mb-8 text-[17px] text-right text-white">
+                     <p>
+                        Zach, <b>Bar Owner</b>
+                     </p>
+                  </div>
                </div>
             </div>
          </Carousel>
-         <div className="container h-[680px] items-center grid grid-cols-2">
-            <div className="flex flex-col col-span-1 gap-6">
-               <h1 className="text-5xl font-bold text-white leading-[3.5rem] mb-2">
+         <div className="container umd:h-[680px] h-[410px] items-center umd:grid block grid-cols-4">
+            <div className="flex flex-col items-center justify-center h-full col-span-3 gap-6 xl:col-span-2">
+               <h1 className="text-5xl font-bold text-white leading-[3.5rem] mb-2 max-w-[620px] text-center umd:text-left">
                   Find the perfect <i className="font-playfair">freelance</i>{" "}
                   services for your business
                </h1>
                <Search />
-               <div className="flex items-center gap-3">
+               <div className="items-center hidden gap-3 umd:flex">
                   <p className="text-base text-white">Popular:</p>
                   <button
                      className="px-3 py-[2px] text-sm font-semibold text-white border border-white rounded-3xl

@@ -10,6 +10,8 @@ body {
   font-size: 17px;
   background-color: #fff;
   color: #62646a;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 /* 
 code {
@@ -26,7 +28,7 @@ a:hover {
 @tailwind components;
 
 .container {
-  @apply max-w-[1400px] mx-auto
+  @apply max-w-[1400px] 2xl:mx-auto px-8 2xl:px-0
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "antd";
 import Tippy from "@tippyjs/react/headless";
@@ -11,7 +11,43 @@ import { getCategories } from "../../slices/categorySlice";
 import DefaultAvatar from "../../../assets/default_avatar.svg";
 import { logoutUpdate } from "../../slices/userSlice";
 
-const Header = () => {
+const LogoLight = (
+   <svg
+      width="89"
+      height="27"
+      viewBox="0 0 89 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+   >
+      <g fill="#ffffff">
+         <path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path>
+      </g>
+      <g fill="#1dbf73">
+         <path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path>
+      </g>
+   </svg>
+);
+
+const Logo = (
+   <svg
+      width="89"
+      height="27"
+      viewBox="0 0 89 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+   >
+      <g fill="#404145">
+         <path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path>
+      </g>
+      <g fill="#1dbf73">
+         <path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path>
+      </g>
+   </svg>
+);
+
+const Header = ({ sticky }) => {
+   const Threshold = 99;
+
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
@@ -19,10 +55,48 @@ const Header = () => {
    const user = useSelector((state) => state.user.auth);
 
    const [items, setItems] = useState([]);
+   const [y, setY] = useState(window.scrollY);
+   const [active, setActive] = useState(sticky ? y < Threshold : false);
+   const [activeMenu, setActiveMenu] = useState(
+      sticky ? y < Threshold * 2 : false
+   );
+
+   const handleNavigation = useCallback(
+      (e) => {
+         const window = e.currentTarget;
+
+         if (sticky) {
+            if (y < Threshold) {
+               setActive(true);
+            } else {
+               setActive(false);
+            }
+
+            if (y < Threshold * 2) {
+               setActiveMenu(true);
+            } else {
+               setActiveMenu(false);
+            }
+         }
+
+         setY(window.scrollY);
+      },
+      [y]
+   );
 
    useEffect(() => {
       dispatch(getCategories());
    }, []);
+
+   useEffect(() => {
+      setY(window.scrollY);
+      window.addEventListener("scroll", (e) => handleNavigation(e));
+
+      return () => {
+         // return a cleanup function to unregister our function since its gonna run multiple times
+         window.removeEventListener("scroll", (e) => handleNavigation(e));
+      };
+   }, [handleNavigation]);
 
    useEffect(() => {
       if (categorySlice?.categories) {
@@ -46,33 +120,26 @@ const Header = () => {
    }, [categorySlice?.categories]);
 
    return (
-      <div>
-         <div className="container py-5">
-            <div className="flex items-center justify-between">
-               <div className="flex items-center gap-8">
-                  <Link to={paths.home}>
-                     <svg
-                        width="89"
-                        height="27"
-                        viewBox="0 0 89 27"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                     >
-                        <g fill="#404145">
-                           <path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path>
-                        </g>
-                        <g fill="#1dbf73">
-                           <path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path>
-                        </g>
-                     </svg>
-                  </Link>
-                  <Search header />
+      <div
+         className={`${
+            active ? "bg-transparent" : "bg-white"
+         } transition-all duration-250 ease-in`}
+      >
+         <div className={`container py-5 bg-transparent`}>
+            <div className="flex items-center justify-between bg-transparent">
+               <div className="flex items-center gap-8 bg-transparent h-[42px]">
+                  <Link to={paths.home}>{active ? LogoLight : Logo}</Link>
+                  {!active && <Search header />}
                </div>
 
                {user ? (
-                  <User user={user?.user} />
+                  <User user={user?.user} active={active} />
                ) : (
-                  <div className="flex gap-6 text-base font-semibold">
+                  <div
+                     className={`flex gap-6 text-base font-semibold bg-transparent ${
+                        active && "text-white"
+                     }`}
+                  >
                      <button className="transition-all duration-200 ease-out hover:text-primary">
                         Become a Seller
                      </button>
@@ -83,7 +150,12 @@ const Header = () => {
                         Sign In
                      </button>
                      <button
-                        className="px-5 py-1 text-sm transition-all duration-200 ease-out border rounded-md border-primary text-primary hover:text-white hover:bg-primary"
+                        className={`px-5 py-1 text-sm transition-all duration-200 ease-out border rounded-md 
+                         hover:text-white hover:bg-primary ${
+                            active
+                               ? "border-white text-white hover:border-primary"
+                               : "border-primary text-primary"
+                         }`}
                         onClick={() => navigate(paths.signup)}
                      >
                         Join
@@ -92,28 +164,22 @@ const Header = () => {
                )}
             </div>
          </div>
-         <div className="border-y border-[#e4e5e7]">
-            <div className="container">
-               <Menu
-                  className="flex items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
-                  // onClick={onClick}
-                  // selectedKeys={[current]}
-                  // style={{
-                  //    border: "none",
-                  //    display: "flex",
-                  //    justifyContent: "space-between",
-                  //    width: "100%",
-                  // }}
-                  mode="horizontal"
-                  items={items}
-               />
+         {!activeMenu && (
+            <div className="border-y border-[#e4e5e7] bg-white">
+               <div className="container">
+                  <Menu
+                     className="flex items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
+                     mode="horizontal"
+                     items={items}
+                  />
+               </div>
             </div>
-         </div>
+         )}
       </div>
    );
 };
 
-const User = ({ user }) => {
+const User = ({ user, active }) => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
@@ -150,7 +216,9 @@ const User = ({ user }) => {
          >
             <div className="flex items-center justify-center gap-6 font-semibold hover:cursor-pointer">
                <p
-                  className="text-secondary hover:text-primary"
+                  className={` hover:text-primary ${
+                     active ? "text-white" : "text-secondary"
+                  }`}
                   onClick={() =>
                      navigate(paths.profile.replace(":id", user?.id))
                   }

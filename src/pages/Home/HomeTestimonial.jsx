@@ -12,11 +12,11 @@ const HomeTestimonial = () => {
          <div className="container mb-[96px]">
             <Swiper navigation={true} modules={[Navigation]} className="w-full">
                <SwiperSlide>
-                  <div className="grid grid-cols-12">
+                  <div className="grid grid-cols-1 umd:grid-cols-12">
                      <img
                         src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173399/testimonial-video-still-rooted.jpg"
                         alt="abc"
-                        className="col-span-5 rounded-md"
+                        className="w-full col-span-5 rounded-md"
                      />
                      <div className="col-span-7 px-10">
                         <p className="flex items-center gap-4 mb-4">
@@ -44,11 +44,11 @@ const HomeTestimonial = () => {
                   </div>
                </SwiperSlide>
                <SwiperSlide>
-                  <div className="grid grid-cols-12">
+                  <div className="grid grid-cols-1 umd:grid-cols-12">
                      <img
                         src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173414/testimonial-video-still-naadam.jpg"
                         alt="abc"
-                        className="col-span-5 rounded-md"
+                        className="w-full col-span-5 rounded-md"
                      />
                      <div className="col-span-7 px-10">
                         <p className="flex items-center gap-4 mb-4">
@@ -75,11 +75,11 @@ const HomeTestimonial = () => {
                   </div>
                </SwiperSlide>
                <SwiperSlide>
-                  <div className="grid grid-cols-12">
+                  <div className="grid grid-cols-1 umd:grid-cols-12">
                      <img
                         src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173396/testimonial-video-still-lavender.jpg"
                         alt="abc"
-                        className="col-span-5 rounded-md"
+                        className="w-full col-span-5 rounded-md"
                      />
                      <div className="col-span-7 px-10">
                         <p className="flex items-center gap-4 mb-4">
@@ -106,11 +106,11 @@ const HomeTestimonial = () => {
                   </div>
                </SwiperSlide>
                <SwiperSlide>
-                  <div className="grid grid-cols-12">
+                  <div className="grid grid-cols-1 umd:grid-cols-12">
                      <img
                         src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173395/testimonial-video-still-haerfest.jpg"
                         alt="abc"
-                        className="col-span-5 rounded-md"
+                        className="w-full col-span-5 rounded-md"
                      />
                      <div className="col-span-7 px-10">
                         <p className="flex items-center gap-4 mb-4">

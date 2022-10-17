@@ -14,6 +14,9 @@ module.exports = {
          textColor: {
             secondary: "#404145",
          },
+         screens: {
+            umd: "900px", // => @upper-media (min-width: 900px) { ... }
+         },
       },
    },
    plugins: [],

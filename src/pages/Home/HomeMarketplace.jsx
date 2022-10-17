@@ -4,10 +4,10 @@ const HomeMarketplace = () => {
    return (
       <div className="container mb-[96px]">
          <p className="pb-6 mb-10 text-4xl font-semibold text-secondary">
-            Popular professional services
+            Explore the marketplace
          </p>
          <ul className="flex flex-wrap">
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href={`"/categories/graphics-design?source=hplo_cat_sepos=1"`}
@@ -20,7 +20,7 @@ const HomeMarketplace = () => {
                   Graphics Design
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/online-marketing?source=hplo_cat_sepos=2"
@@ -33,7 +33,7 @@ const HomeMarketplace = () => {
                   Digital Marketing
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/writing-translation?source=hplo_cat_sepos=3"
@@ -47,7 +47,7 @@ const HomeMarketplace = () => {
                   Writing Translation
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/video-animation?source=hplo_cat_sepos=4"
@@ -61,7 +61,7 @@ const HomeMarketplace = () => {
                   Video Animation
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/music-audio?source=hplo_cat_sepos=5"
@@ -74,7 +74,7 @@ const HomeMarketplace = () => {
                   Music Audio
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/programming-tech?source=hplo_cat_sepos=6"
@@ -87,7 +87,7 @@ const HomeMarketplace = () => {
                   Programming Tech
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/business?source=hplo_cat_sepos=7"
@@ -100,7 +100,7 @@ const HomeMarketplace = () => {
                   Business
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                   className="text-center text-[#222325] relative inline-block transition-colors duration-200 decoration-none hover:outline-none hover:text-black cate-list"
                   // href="/categories/lifestyle?source=hplo_cat_sepos=8"
@@ -113,7 +113,7 @@ const HomeMarketplace = () => {
                   Lifestyle
                </a>
             </li>
-            <li className="w-1/5 pb-[55px] px-[10px] list-item text-center">
+            <li className="umd:w-1/5 w-1/3 pb-[55px] px-[10px] list-item text-center">
                <a
                // href="/categories/data?source=hplo_cat_sepos=9"
                >

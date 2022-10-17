@@ -7,7 +7,7 @@ import { signUp, updateAllow } from "../../common/slices/userSlice";
 import { ToastContainer } from "react-toastify";
 import { paths } from "../../app/routes";
 import { Link, useNavigate } from "react-router-dom";
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 
 import { signupSchema } from "./signupSchema";
 import "react-toastify/dist/ReactToastify.css";

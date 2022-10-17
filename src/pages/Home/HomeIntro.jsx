@@ -4,8 +4,8 @@ import { HiOutlineCheckCircle } from "react-icons/hi";
 const HomeIntro = () => {
    return (
       <div className="w-screen py-[96px] bg-[#f1fdf7] mb-[96px]">
-         <div className="container grid grid-cols-2">
-            <div className="max-w-[500px]">
+         <div className="container grid grid-cols-1 umd:grid-cols-2">
+            <div className="umd:max-w-[500px] w-full">
                <p className="mb-6 text-4xl font-semibold text-secondary">
                   A whole world of freelance talent at your fingertips
                </p>
@@ -62,6 +62,7 @@ const HomeIntro = () => {
             </div>
             <div className="relative flex items-center">
                <img
+                  className="w-full"
                   alt="Video teaser image"
                   src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png"
                />
@@ -69,7 +70,7 @@ const HomeIntro = () => {
                   <img
                      src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png"
                      alt="play icon"
-                     className="w-20 h-20 "
+                     className="w-20 h-20"
                   />
                </div>
             </div>

@@ -56,8 +56,8 @@ const Search = ({ content, header = false }) => {
             <div>
                {searchText && (
                   <div
-                     className={`${
-                        header ? "w-[550px]" : "w-[600px]"
+                     className={`w-full ${
+                        header ? " max-w-[550px]" : "max-w-[600px]"
                      } h-auto min-h-20 pb-3 bg-white rounded-b-md px-6 shadow-lg -m-[9px]`}
                      tabIndex="-1"
                      {...attrs}
@@ -104,7 +104,11 @@ const Search = ({ content, header = false }) => {
             </div>
          )}
       >
-         <div className={`${header ? "w-[550px]" : "w-[600px]"} flex relative`}>
+         <div
+            className={`w-full ${
+               header ? "max-w-[550px]" : "max-w-[600px]"
+            } flex relative`}
+         >
             {!header && (
                <IoSearch className="absolute top-0 h-full text-xl leading-6 text-[#8e8e8e] opacity-80 left-4" />
             )}
