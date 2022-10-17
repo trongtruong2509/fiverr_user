@@ -30,30 +30,35 @@ const Home = () => {
          <div className="w-full">
             <HomeCarousel />
             <div className="bg-[#fafafa] mb-[96px] w-screen">
-               <div className="container flex items-center justify-center w-full h-[96px]">
-                  <span className="pr-5 font-semibold text-[#b5b6ba]">
+               <div className="container flex items-center justify-center w-full umd:h-[96px] md:h-[86px]">
+                  <span className="pr-5 font-semibold text-[#b5b6ba] hidden lg:block">
                      Trusted by
                   </span>
                   <div className="flex items-center justify-center gap-[60px] px-6">
                      <img
                         src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/facebook.31d5f92.png"
                         alt="Facebook"
+                        className="h-10 md:h-14 xl:h-16"
                      />
                      <img
                         src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/google.517da09.png"
                         alt="Google"
+                        className="h-10 md:h-14 xl:h-16"
                      />
                      <img
                         src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/netflix.e3ad953.png"
                         alt="Netflix"
+                        className="h-10 md:h-14 xl:h-16"
                      />
                      <img
                         src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/pandg.8b7310b.png"
                         alt="PnG"
+                        className="h-10 md:h-14 xl:h-16"
                      />
                      <img
                         src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/paypal.ec56157.png"
                         alt="Paypal"
+                        className="w-10 md:w-14 xl:w-16"
                      />
                   </div>
                </div>

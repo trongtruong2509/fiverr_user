@@ -126,21 +126,23 @@ const Header = ({ sticky }) => {
          } transition-all duration-250 ease-in`}
       >
          <div className={`container py-5 bg-transparent`}>
-            <div className="flex items-center justify-between bg-transparent">
-               <div className="flex items-center gap-8 bg-transparent h-[42px]">
+            <div className="flex items-center justify-between gap-6 bg-transparent">
+               <div className="flex items-center gap-8 bg-transparent h-[42px] w-full">
                   <Link to={paths.home}>{active ? LogoLight : Logo}</Link>
-                  {!active && <Search header />}
+                  <div className="hidden w-full sm:block">
+                     {!active && <Search header />}
+                  </div>
                </div>
 
                {user ? (
                   <User user={user?.user} active={active} />
                ) : (
                   <div
-                     className={`flex gap-6 text-base font-semibold bg-transparent ${
+                     className={`flex gap-6 text-base font-semibold bg-transparent shrink-0 ${
                         active && "text-white"
                      }`}
                   >
-                     <button className="transition-all duration-200 ease-out hover:text-primary">
+                     <button className="hidden transition-all duration-200 ease-out hover:text-primary xl:block">
                         Become a Seller
                      </button>
                      <button
@@ -164,17 +166,17 @@ const Header = ({ sticky }) => {
                )}
             </div>
          </div>
-         {!activeMenu && (
+         {/* {!activeMenu && (
             <div className="border-y border-[#e4e5e7] bg-white">
                <div className="container">
                   <Menu
-                     className="flex items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
+                     className="flex w-screen items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
                      mode="horizontal"
                      items={items}
                   />
                </div>
             </div>
-         )}
+         )} */}
       </div>
    );
 };

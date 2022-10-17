@@ -91,7 +91,7 @@ const HomeCarousel = () => {
             </div>
          </Carousel>
          <div className="container umd:h-[680px] h-[410px] items-center umd:grid block grid-cols-4">
-            <div className="flex flex-col items-center justify-center h-full col-span-3 gap-6 xl:col-span-2">
+            <div className="flex flex-col items-center justify-center h-full col-span-3 gap-6 umd:items-start xl:col-span-2">
                <h1 className="text-5xl font-bold text-white leading-[3.5rem] mb-2 max-w-[620px] text-center umd:text-left">
                   Find the perfect <i className="font-playfair">freelance</i>{" "}
                   services for your business

@@ -34,14 +34,14 @@ const Search = ({ content, header = false }) => {
    }, [searchText]);
 
    const btnStyle =
-      "px-6 py-3 font-semibold text-white rounded-r-md bg-primary hover:bg-primary-dark";
+      "px-6 py-3 font-semibold text-white rounded-r-[4px] bg-primary hover:bg-primary-dark";
    const btnHeaderStyle =
-      "py-2 px-4 font-semibold bg-[#222325] rounded-r-[4px] flex items-center justify-center text-white";
+      "py-2 px-4 font-semibold bg-[#222325] rounded-r-[4px] flex items-center justify-center text-white umd:block hidden -ml-1";
 
    const inputStyle =
-      "py-2 pl-12 leading-6 rounded-l-md w-[500px] outline-none";
+      "py-2 pl-12 leading-6 rounded-l-[4px] w-[500px] outline-none";
    const inputHeaderStyle =
-      "py-2 px-4 leading-6 rounded-l-[4px] w-[500px] outline-none border-l border-y border-[#c5c6c9] text-base";
+      "py-2 px-4 leading-6 rounded-[4px] umd:rounded-l-[4px] w-full outline-none umd:border-l border umd:border-y border-[#c5c6c9] text-base";
 
    return (
       <Tippy
@@ -56,8 +56,8 @@ const Search = ({ content, header = false }) => {
             <div>
                {searchText && (
                   <div
-                     className={`w-full ${
-                        header ? " max-w-[550px]" : "max-w-[600px]"
+                     className={`umd:w-[500px] w-full ${
+                        header ? "lg:max-w-[550px]" : "lg:max-w-[600px]"
                      } h-auto min-h-20 pb-3 bg-white rounded-b-md px-6 shadow-lg -m-[9px]`}
                      tabIndex="-1"
                      {...attrs}
@@ -105,8 +105,8 @@ const Search = ({ content, header = false }) => {
          )}
       >
          <div
-            className={`w-full ${
-               header ? "max-w-[550px]" : "max-w-[600px]"
+            className={`lg:w-[600px] w-full ${
+               header ? "lg:max-w-[550px]" : "lg:max-w-[600px]"
             } flex relative`}
          >
             {!header && (
