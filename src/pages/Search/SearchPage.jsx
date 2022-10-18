@@ -65,7 +65,7 @@ const SearchPage = () => {
                         />
                      </div>
                   ) : (
-                     <div className="grid grid-cols-4 gap-8 mb-10">
+                     <div className="grid grid-cols-1 gap-8 mb-10 sm:grid-cols-2 xl:grid-cols-4 umd:grid-cols-3">
                         {jobSlice?.jobs?.map((job) => (
                            <div className="col-span-1" key={job.id}>
                               <JobItem job={job} />

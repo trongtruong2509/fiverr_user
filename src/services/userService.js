@@ -23,10 +23,7 @@ export const getUserInfo = async (id) => {
 };
 
 export const updateUser = async (info) => {
-   const res = await httpRequest.post(
-      "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-      info
-   );
+   const res = await httpRequest.put(`/users/${info.id}`, info);
 
    console.log("[User Service] updateUser", res);
    return res;

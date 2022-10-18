@@ -166,17 +166,17 @@ const Header = ({ sticky }) => {
                )}
             </div>
          </div>
-         {/* {!activeMenu && (
+         {!activeMenu && (
             <div className="border-y border-[#e4e5e7] bg-white">
                <div className="container">
                   <Menu
-                     className="flex w-screen items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
+                     className="flex items-center justify-between border-none before:hidden after:hidden hover:text-[#62646a]"
                      mode="horizontal"
                      items={items}
                   />
                </div>
             </div>
-         )} */}
+         )}
       </div>
    );
 };

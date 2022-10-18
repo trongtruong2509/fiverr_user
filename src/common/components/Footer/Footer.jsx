@@ -428,7 +428,7 @@ const Footer = () => {
                   </article>
                </div>
             </div>
-            <div className="flex justify-between border-t border-[#e4e5e7] pt-5">
+            <div className="umd:flex block justify-between border-t border-[#e4e5e7] pt-5">
                <div className="flex gap-4 left">
                   <span className="fiverr-logo-footer">
                      <svg
@@ -452,7 +452,7 @@ const Footer = () => {
                      </span>
                   </p>
                </div>
-               <div className="flex gap-8 right">
+               <div className="flex gap-8 mt-4 right umd:mt-0">
                   <ul className="flex items-center gap-4 social text=[#74767e]">
                      <li className="hover:bg-[#efeff0] hover:rounded-full p-2">
                         <a href="https://twitter.com/fiverr" target="_blank">

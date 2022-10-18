@@ -37,11 +37,13 @@ export const signUp = createAsyncThunk(
 );
 
 export const updateUserInfo = createAsyncThunk(
-   "user/updateUserInfoStatus",
+   "user/updateUserInfo",
    async (info) => {
+      console.log("[updateUserInfo]", info);
+
       const response = await userService.updateUser(info);
 
-      return response.data.content;
+      return response.content;
    }
 );
 
@@ -94,10 +96,7 @@ export const userSlice = createSlice({
             state.pending = false;
             toast.info("Login successfully");
             localStorage.setItem("accessToken", action.payload.token);
-
-            // if (state.remember) {
             localStorage.setItem("fiverr_User", JSON.stringify(action.payload));
-            // }
          })
          .addCase(userLogin.rejected, (state, action) => {
             console.log("[userLogin] rejected", action.payload);
@@ -131,9 +130,22 @@ export const userSlice = createSlice({
          })
          .addCase(updateUserInfo.fulfilled, (state, action) => {
             console.log("[updateUserInfo] success");
-            state.successDelete = true;
+            state.auth.user = action.payload;
+            state.current = action.payload;
+            state.success = true;
             state.pending = false;
-            toast.info("Account info updated!");
+            toast.info("User info updated!");
+            localStorage.setItem(
+               "fiverr_User",
+               JSON.stringify({ user: action.payload, token: state.auth.token })
+            );
+         })
+         .addCase(updateUserInfo.rejected, (state, action) => {
+            console.log("[updateUserInfo] rejected", action.payload);
+            // state.current = null;
+            state.success = false;
+            state.pending = false;
+            toast.error("User info update fail!");
          })
          .addCase(getUser.fulfilled, (state, action) => {
             console.log("[getUser] success", action.payload);
