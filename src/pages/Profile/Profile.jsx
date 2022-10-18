@@ -8,7 +8,12 @@ import { ToastContainer } from "react-toastify";
 import DefaultAvatar from "../../assets/default_avatar.svg";
 import Footer from "../../common/components/Footer/Footer";
 import Header from "../../common/components/Header/Header";
-import { getUser, updateUserInfo } from "../../common/slices/userSlice";
+import {
+   getUser,
+   updateUser,
+   updateUserInfo,
+   uploadNewAvatar,
+} from "../../common/slices/userSlice";
 import { getBookingJobs } from "../../common/slices/bookingSlice";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
@@ -45,6 +50,12 @@ const Profile = () => {
    useEffect(() => {
       if (currentUser && user && currentUser?.id === user?.id) {
          setEditable(true);
+         dispatch(
+            updateUser({
+               token: localStorage.getItem("accessToken"),
+               user: currentUser,
+            })
+         );
       } else {
          setEditable(false);
       }
@@ -60,6 +71,7 @@ const Profile = () => {
 
    const onAvatarUpload = (image) => {
       console.log("[onAvatarUpload]", image);
+      dispatch(uploadNewAvatar({ formFile: image }));
    };
 
    const updateGeneralHandle = () => {

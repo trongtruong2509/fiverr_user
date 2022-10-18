@@ -44,7 +44,7 @@ const Search = ({ content, header = false }) => {
    const inputStyle =
       "py-2 pl-12 leading-6 rounded-l-[4px] w-full outline-none";
    const inputHeaderStyle =
-      "py-2 px-4 leading-6 rounded-[4px] umd:rounded-l-[4px] w-full outline-none umd:border-l border umd:border-y border-[#c5c6c9] text-base";
+      "py-2 px-4 leading-6 rounded-[4px] umd:rounded-l-[4px] w-[50vw] md:w-[60vw] lg:w-[50vw] max-w-[600px] outline-none umd:border-l border umd:border-y border-[#c5c6c9] text-base";
 
    return (
       <Tippy
@@ -59,7 +59,7 @@ const Search = ({ content, header = false }) => {
             <div>
                {searchText && (
                   <div
-                     className="w-full min-w-full lg:max-w-[600px] h-auto min-h-20 pb-3
+                     className="w-[50vw] md:w-[60vw] lg:w-[50vw] max-w-[600px] h-auto min-h-20 pb-3
                      bg-white rounded-md px-6 shadow-lg -mt-[8px] flex flex-col"
                      tabIndex="-1"
                      {...attrs}

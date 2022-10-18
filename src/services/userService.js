@@ -1,4 +1,3 @@
-import { TOKEN } from "../common/utils/config";
 import * as httpRequest from "../common/utils/httpRequest";
 
 export const login = async (info) => {
@@ -26,5 +25,17 @@ export const updateUser = async (info) => {
    const res = await httpRequest.put(`/users/${info.id}`, info);
 
    console.log("[User Service] updateUser", res);
+   return res;
+};
+
+export const uploadAvatar = async (image) => {
+   const res = await httpRequest.post("/users/upload-avatar", image, {
+      headers: {
+         "Content-Type": "multipart/form-data",
+         token: localStorage.getItem("accessToken"),
+      },
+   });
+
+   console.log("[User Service] uploadAvatar", res);
    return res;
 };

@@ -1,4 +1,3 @@
-import { TOKEN } from "../common/utils/config";
 import * as httpRequest from "../common/utils/httpRequest";
 
 export const getJobs = async (name) => {

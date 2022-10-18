@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
+import { ToastContainer } from "react-toastify";
 import Footer from "../../common/components/Footer/Footer";
 import Header from "../../common/components/Header/Header";
 import JobItem from "../../common/components/Job/JobItem";
@@ -84,6 +85,15 @@ const JobsPage = () => {
             </div>
          </div>
          <Footer />
+         <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            draggable
+         />
       </div>
    );
 };

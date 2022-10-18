@@ -8,3 +8,10 @@ export const getComments = async (jobId) => {
    console.log("[getComments]", res);
    return res;
 };
+
+export const postComment = async (comment) => {
+   const res = await httpRequest.post("/binh-luan", comment);
+
+   console.log("[postComment]", res);
+   return res;
+};

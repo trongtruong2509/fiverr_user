@@ -42,7 +42,6 @@ export const updateUserInfo = createAsyncThunk(
       console.log("[updateUserInfo]", info);
 
       const response = await userService.updateUser(info);
-
       return response.content;
    }
 );
@@ -52,6 +51,23 @@ export const getUser = createAsyncThunk("user/getUser", async (id) => {
 
    return response.content;
 });
+
+export const uploadNewAvatar = createAsyncThunk(
+   "user/uploadNewAvatar",
+   async (image, { rejectWithValue }) => {
+      try {
+         const response = await userService.uploadAvatar(image);
+
+         return response.data.content;
+      } catch (err) {
+         if (!err.response) {
+            throw err;
+         }
+
+         return rejectWithValue(err.response.data);
+      }
+   }
+);
 
 const initialState = {
    auth: JSON.parse(localStorage.getItem("fiverr_User")) ?? null,
@@ -157,6 +173,25 @@ export const userSlice = createSlice({
             console.log("[getUser] rejected", action.payload);
             state.current = null;
             state.success = false;
+            state.pending = false;
+         })
+         .addCase(uploadNewAvatar.pending, (state) => {
+            console.log("[uploadNewAvatar]", "loading");
+            state.pending = true;
+         })
+         .addCase(uploadNewAvatar.fulfilled, (state, action) => {
+            console.log("[uploadNewAvatar] success", action.payload);
+            //@todo: update user info
+            state.success = true;
+            toast.info("New avatar updated");
+            state.current = action.payload;
+            state.pending = false;
+         })
+         .addCase(uploadNewAvatar.rejected, (state, action) => {
+            console.log("[uploadNewAvatar] rejected", action.payload);
+            state.allow = false;
+            state.success = false;
+            toast.error(action.payload?.message);
             state.pending = false;
          });
    },

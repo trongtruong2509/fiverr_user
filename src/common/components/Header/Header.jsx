@@ -230,7 +230,7 @@ const User = ({ user, active }) => {
                <img
                   src={user?.avatar == "" ? DefaultAvatar : user?.avatar}
                   alt={user?.name}
-                  className="object-cover w-10 h-10 rounded-full"
+                  className="object-cover w-10 h-10 rounded-full shrink-0"
                />
             </div>
          </Tippy>

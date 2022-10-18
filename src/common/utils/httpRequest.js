@@ -27,9 +27,7 @@ export const post = async (path, data, options = {}) => {
       headers: {
          ...defaultHeader,
          token: localStorage.getItem("accessToken"),
-         "Content-Type": "application/json-patch+json",
-         // Authorization:
-         //    "Bearer " + localStorage.getItem("accessToken") ?? ACCESS_TOKEN,
+         // "Content-Type": "application/json-patch+json",
       },
       ...options,
    });
@@ -41,7 +39,6 @@ export const put = async (path, data, options = {}) => {
    const response = await httpRequest.put(path, data, {
       headers: {
          ...defaultHeader,
-         // Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },
       ...options,
    });

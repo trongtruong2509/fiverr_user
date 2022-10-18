@@ -6,28 +6,40 @@ import { toast } from "react-toastify";
 
 const initialState = {
    comments: [],
-   // jobs: [],
-   // currentJob: null,
    pending: false,
    success: false,
-   // successDelete: false,
-   // allow: false, // allow to navigate
 };
 
-export const getComments = createAsyncThunk("job/getComments", async (name) => {
-   const response = await commentService.getComments(name);
-   console.log("[getComments]", response.content);
-   return response.content;
-});
+export const getComments = createAsyncThunk(
+   "comment/getComments",
+   async (name, { rejectWithValue }) => {
+      try {
+         const response = await commentService.getComments(name);
+         console.log("[getComments]", response.content);
+         return response.content;
+      } catch (err) {
+         if (!err.response) {
+            throw err;
+         }
+
+         return rejectWithValue(err.response.data);
+      }
+   }
+);
+
+export const postNewComment = createAsyncThunk(
+   "comment/postNewComment",
+   async (comment) => {
+      const response = await commentService.postComment(comment);
+      console.log("[postNewComment]", response.content);
+      return response.content;
+   }
+);
 
 export const commentSlice = createSlice({
    name: "comment",
    initialState,
-   reducers: {
-      // updateSearchJobs: (state, action) => {
-      //    state.selected = action.payload;
-      // },
-   },
+   reducers: {},
    extraReducers: (builder) => {
       builder
          .addCase(getComments.pending, (state) => {
@@ -41,11 +53,29 @@ export const commentSlice = createSlice({
             state.success = true;
             state.pending = false;
          })
-         .addCase(getComments.rejected, (state) => {
-            console.log("[getComments] rejected");
+         .addCase(getComments.rejected, (state, action) => {
+            console.log("[getComments] rejected", action.payload.message);
             state.comments = [];
             state.success = false;
             state.pending = false;
+            toast.error(action.payload.message);
+         })
+         .addCase(postNewComment.pending, (state) => {
+            console.log("[postNewComment]", "loading");
+            state.pending = true;
+         })
+         .addCase(postNewComment.fulfilled, (state, action) => {
+            console.log("[postNewComment] success", action.payload);
+            state.success = true;
+            state.pending = false;
+            toast.info("New comment added");
+         })
+         .addCase(postNewComment.rejected, (state, action) => {
+            console.log("[postNewComment] rejected");
+            // state.comments = [];
+            state.success = false;
+            state.pending = false;
+            toast.error(action.payload.content);
          });
    },
 });
