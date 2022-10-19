@@ -58,7 +58,7 @@ export const commentSlice = createSlice({
             state.comments = [];
             state.success = false;
             state.pending = false;
-            toast.error(action.payload.message);
+            toast.error(`Get comments failed. ${action.payload.message}`);
          })
          .addCase(postNewComment.pending, (state) => {
             console.log("[postNewComment]", "loading");

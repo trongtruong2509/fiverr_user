@@ -17,7 +17,7 @@ export const getJobById = async (id) => {
 };
 
 export const rentJob = async (model) => {
-   const res = await httpRequest.post(`/api/thue-cong-viec`, model);
+   const res = await httpRequest.post(`/thue-cong-viec`, model);
 
    console.log("[rentJob]", res);
    return res;

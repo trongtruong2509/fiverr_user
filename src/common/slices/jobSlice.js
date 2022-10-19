@@ -40,8 +40,8 @@ export const getCurrentJobs = createAsyncThunk(
 
 export const rentAJob = createAsyncThunk("job/rentAJob", async (model) => {
    const response = await jobService.rentJob(model);
-   console.log("[rentAJob]", response.content);
-   return response.content[0];
+   console.log("[rentAJob]", response.data.content);
+   return response.data.content;
 });
 
 export const jobSlice = createSlice({
@@ -110,15 +110,12 @@ export const jobSlice = createSlice({
             state.pending = true;
          })
          .addCase(rentAJob.fulfilled, (state, action) => {
-            // console.log("[rentAJob] success", action.payload);
-
-            // state.currentJob = action.payload;
+            toast.info("Rented new job!");
             state.success = true;
             state.pending = false;
          })
          .addCase(rentAJob.rejected, (state) => {
-            // console.log("[rentAJob] rejected");
-            // state.currentJob = [];
+            toast.error("Rent job failed. Please try again!");
             state.success = false;
             state.pending = false;
          });

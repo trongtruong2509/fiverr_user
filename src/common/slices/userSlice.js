@@ -146,8 +146,30 @@ export const userSlice = createSlice({
          })
          .addCase(updateUserInfo.fulfilled, (state, action) => {
             console.log("[updateUserInfo] success");
-            state.auth.user = action.payload;
-            state.current = action.payload;
+            let skill = action.payload.skill;
+            if (skill === "[]") {
+               skill = [];
+            } else {
+               skill = action.payload.skill
+                  .replace("[", "")
+                  .replace("]", "")
+                  .replaceAll(`"`, "")
+                  .split(",");
+            }
+
+            let certification = action.payload.certification;
+            if (certification === "[]") {
+               certification = [];
+            } else {
+               certification = action.payload.certification
+                  .replace("[", "")
+                  .replace("]", "")
+                  .replaceAll(`"`, "")
+                  .split(",");
+            }
+
+            state.auth.user = { ...action.payload, skill, certification };
+            state.current = { ...action.payload, skill, certification };
             state.success = true;
             state.pending = false;
             toast.info("User info updated!");
@@ -196,6 +218,10 @@ export const userSlice = createSlice({
          });
    },
 });
+
+const getArrayFromStr = (str) => {
+   let input = str.replace("[", "").replace("]", "").split(",");
+};
 
 // Action creators are generated for each case reducer function
 export const { updateUser, updateAllow, updateRemember, logoutUpdate } =

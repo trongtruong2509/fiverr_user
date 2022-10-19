@@ -14,15 +14,15 @@ const BookingJob = ({ job }) => {
 
    return (
       <div>
-         <div className="grid grid-cols-12 gap-4 bg-[#fafafa]">
-            <div className="col-span-4">
+         <div className="grid-cols-12 gap-4 bg-[#fafafa] md:grid">
+            <div className="col-span-5">
                <img
                   src={job?.congViec.hinhAnh}
                   alt={job?.congViec.tenCongViec}
-                  className="w-full h-48 "
+                  className="w-full"
                />
             </div>
-            <div className="col-span-8">
+            <div className="col-span-7">
                <div className="">
                   <p
                      className="mt-3 text-2xl font-semibold cursor-pointer text-secondary hover:text-primary"
@@ -47,7 +47,7 @@ const BookingJob = ({ job }) => {
                   </div>
                </div>
                <p className="mt-4">{job?.congViec.moTaNgan}</p>
-               <div className="flex justify-end gap-4 pb-3 pr-3">
+               <div className="flex justify-end gap-4 p-3">
                   <button
                      className="px-4 py-[6px] rounded-[4px] border hover:text-white hover:bg-slate-600"
                      onClick={() => {

@@ -77,7 +77,11 @@ export const bookingSlice = createSlice({
             if (idx !== -1) {
                state.jobs.splice(idx, 1);
             }
-
+            toast.info(
+               `Deleted booking job "${
+                  current(state.deletingJob).congViec.tenCongViec
+               }"`
+            );
             state.deletingJob = null;
             state.success = true;
             state.pending = false;

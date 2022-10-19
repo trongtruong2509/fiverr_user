@@ -29,7 +29,8 @@ const Category = () => {
          </div>
          <div className="container mt-14">
             <p className="mb-6 text-2xl font-semibold text-secondary">
-               Explore <span>{"Graphics & Design"}</span>
+               Explore{" "}
+               <span>{categorySlice?.currentCategory?.tenLoaiCongViec}</span>
             </p>
          </div>
 

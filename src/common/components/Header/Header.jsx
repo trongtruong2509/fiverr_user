@@ -104,6 +104,8 @@ const Header = ({ sticky }) => {
             categorySlice?.categories.map((cate) => ({
                key: cate.id,
                label: cate.tenLoaiCongViec,
+               onTitleClick: () =>
+                  navigate(paths.category.replace(":id", cate.id)),
                children: cate.dsNhomChiTietLoai.map((group) => ({
                   key: group.hinhAnh,
                   type: "group",
